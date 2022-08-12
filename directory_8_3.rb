@@ -21,8 +21,8 @@ end
 # whose name begins with a specific letter.
 def print_char(arr)
   arr.each do |x|
-    if x[:name].start_with?("s")
-      puts "My name is #{x[:name]}, it starts with an S for Super!" 
+    if x[:name].length < 12
+      puts "My name is #{x[:name]} in the #{x[:cohort]} cohort and my name is less than 12 characters long!" 
     end
   end
 end
