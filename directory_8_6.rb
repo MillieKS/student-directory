@@ -1,3 +1,4 @@
+@width = 50
 # first we put all students into an array
 students = [
   {name: "Dr. Hannibal Lecter", cohort: :november, DOB: "10/11/66", hobbies: "Tennis"},
@@ -14,7 +15,7 @@ students = [
 ]
 # we print the list of students with methods
 def print_header
-  puts "The students of Villian Academy"
+  puts "The students of Villian Academy".center(@width)
   puts "-------------"
 end
 # Modify your program to only print the students 
@@ -37,18 +38,18 @@ end
 
 # finally, we print the total number of students
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
+  puts "Overall, we have #{names.count} great students".center(@width)
 end
   
 def start_input
-  puts "Do you want to add a student? (y/n)"
+  puts "Do you want to add a student? (y/n)".center(@width)
   answ = gets.chomp.upcase
   if answ == "Y"
     return true
   elsif answ == "N"
     return false
   else
-    puts "try again"
+    puts "try again".center(@width)
   end
   start_input
 end
@@ -59,13 +60,13 @@ def input_students
   
   initialise = start_input
   while initialise
-    puts "Please enter the names of the students"
+    puts "Please enter the names of the students".center(@width)
     name = gets.chomp
-    puts "Please enter the students DOB in dd/mm/yy."
+    puts "Please enter the students DOB in dd/mm/yy.".center(@width)
     dob = gets.chomp 
     hobby = adding_hobbies
     students << {name: name, cohort: :november, DOB: dob, hobbies: hobby}
-    puts "Now we have #{students.count} students"
+    puts "Now we have #{students.count} students".center(@width)
     initialise = start_input
   end
   # return the array of students
@@ -74,9 +75,9 @@ end
 
 def adding_hobbies
   hobbies = " "
-  puts "Please enter one of their hobbies"
+  puts "Please enter one of their hobbies".center(@width)
   hobby = gets.chomp
-  puts "To finish, just hit return twice"
+  puts "To finish, just hit return.".center(@width)
   while !hobby.empty?
     hobbies << hobby
     hobby = gets.chomp
