@@ -17,13 +17,22 @@ def print_header
   puts "The students of Villian Academy"
   puts "-------------"
 end
+# Modify your program to only print the students 
+# whose name begins with a specific letter.
+def print_char(arr)
+  arr.each do |x|
+    if x[:name].start_with?("s")
+      puts "My name is #{x[:name]}, it starts with an S for Super!" 
+    end
+  end
+end
 
 def print(arr)
   arr.each_with_index do |student, index|
-    puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"
+    puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"  
   end
 end
-  
+
 # finally, we print the total number of students
 def print_footer(names)
   puts "Overall, we have #{names.count} great students"
@@ -49,5 +58,6 @@ end
 
 students = input_students
 print_header
-print(students)
-print_footer(students)
+# print(students)
+# print_footer(students)
+print_char(students)
