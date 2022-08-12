@@ -26,7 +26,7 @@ def print_char(arr)
     end
   end
 end
-
+# Rewrite the each() method that prints all students using while or until control flow methods
 def print(arr)
   names = 0
   while names < arr.count
