@@ -28,8 +28,10 @@ def print_char(arr)
 end
 
 def print(arr)
-  arr.each_with_index do |student, index|
-    puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"  
+  names = 0
+  while names < arr.count
+    puts "#{arr[names][:name]} #{arr[names][:cohort]} cohort"
+    names += 1  
   end
 end
 
@@ -58,6 +60,6 @@ end
 
 students = input_students
 print_header
-# print(students)
+print(students)
 # print_footer(students)
-print_char(students)
+# print_char(students)
