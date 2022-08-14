@@ -3,6 +3,16 @@ require 'csv'
 @students = []
 @default_filename = "students.csv"
 
+def open_file
+  file = File.open($0, "r" )
+    file.readlines.each do |row|
+      puts row
+    end
+  file.close
+end
+
+open_file
+
 def print_main_menu
   puts "1. Input the students"
   puts "2. Show the students"
