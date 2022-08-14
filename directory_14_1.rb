@@ -10,8 +10,10 @@ def print_main_menu
 end
 
 def save_students
+  puts "Please enter the name of the file"
+  file_name = gets.chomp
   # open the file for writing
-  file = File.open("students.csv", "w")
+  file = File.open(file_name, "w")
   # iterate over the array of students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
@@ -23,6 +25,8 @@ def save_students
 end
 
 def load_students(filename = @default_filename)
+  puts "Please enter the name of the file"
+  filename = gets.chomp
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
@@ -113,9 +117,6 @@ def input_students
     puts "Overall, we have #{@students.count} great students"
   end
   
-
-  print_header
-  print_student_list
-  print_footer
-  load_students
   interactive_menu
+  load_students
+ 
