@@ -23,8 +23,14 @@ def input_students
   end
   
   def print(students)
-    students.each do |student|
-      puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    if students.empty?
+      puts "There are no students inputed" 
+    else
+      i = 0
+      while i > students.count
+        puts "#{students[i][:name]} in the #{students[i][:cohort]} cohort."
+        i += 1 
+      end
     end
   end
   
