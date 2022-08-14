@@ -27,13 +27,13 @@ end
 def load_students(filename = @default_filename)
   puts "Please enter the name of the file"
   filename = gets.chomp
-  file = File.open(filename, "r")
-  file.readlines.each do |line|
-  name, cohort = line.chomp.split(',')
+  file = File.open(filename, "r") do |file|
+    file.readlines.each do |line|
+    name, cohort = line.chomp.split(',')
     adding_student(name, cohort)
+    end
+    puts "file #{filename} loaded"
   end
-  file.close
-  puts "file #{filename} loaded"
 end
 
 def adding_student(name, cohort)
