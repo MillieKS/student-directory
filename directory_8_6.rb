@@ -13,6 +13,30 @@ students = [
   {name: "Joffrey Baratheon", cohort: :november, DOB: "24/06/92", hobbies: "Photography"},
   {name: "Norman Bates", cohort: :november, DOB: "01/01/68", hobbies: "Cooking"}
 ]
+# method for adding specific cohort
+
+def adding_cohort 
+  next_cohort = :september 
+  puts " what cohort are they joining?".center(@width)
+  puts " You have 3 option \n 1. September \n 2. January \n 3. April".center(@width)
+  puts " Please select either 1 2 or 3.".center(@width)
+  cohort = gets.chomp
+  case cohort
+  when "1"
+    cohort = :september
+  when "2"
+    cohort = :january
+  when "3"
+    cohort = :april
+  when ""
+    puts "No input, the next cohort will be added".center(@width)
+    cohort = next_cohort
+  else 
+    puts " input not recognised".center(@width)
+  end
+  cohort
+end
+
 # we print the list of students with methods
 def print_header
   puts "The students of Villian Academy".center(@width)
@@ -65,7 +89,8 @@ def input_students
     puts "Please enter the students DOB in dd/mm/yy.".center(@width)
     dob = gets.chomp 
     hobby = adding_hobbies
-    students << {name: name, cohort: :november, DOB: dob, hobbies: hobby}
+    cohort = adding_cohort
+    students << {name: name, cohort: cohort, DOB: dob, hobbies: hobby}
     puts "Now we have #{students.count} students".center(@width)
     initialise = start_input
   end
@@ -77,7 +102,6 @@ def adding_hobbies
   hobbies = " "
   puts "Please enter one of their hobbies".center(@width)
   hobby = gets.chomp
-  puts "To finish, just hit return.".center(@width)
   while !hobby.empty?
     hobbies << hobby
     hobby = gets.chomp
