@@ -99,9 +99,9 @@ def input_students
   initialise = start_input
   while initialise
     puts "Please enter the names of the students".center(@width)
-    name = gets.chomp
+    name = gets.strip
     puts "Please enter the students DOB in dd/mm/yy.".center(@width)
-    dob = gets.chomp 
+    dob = gets.strip 
     hobby = adding_hobbies
     cohort = adding_cohort
     students << {name: name, cohort: cohort, DOB: dob, hobbies: hobby}
