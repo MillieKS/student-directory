@@ -1,3 +1,5 @@
+require 'csv'
+
 @students = []
 @default_filename = "students.csv"
 
@@ -12,28 +14,25 @@ end
 def save_students
   puts "Please enter the name of the file"
   file_name = gets.chomp
-  # open the file for writing
-  file = File.open(file_name, "w")
+  # open the file for writing with CSV
+  CSV.open(file_name, "w") do |csv|
   # iterate over the array of students
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
+    @students.each do |student|
+      csv << [student[:name], student[:cohort]]
+    end
   end
   file.close
-  puts " Filed saved and closed"
+  puts " File saved and closed"
 end
 
 def load_students(filename = @default_filename)
   puts "Please enter the name of the file"
   filename = gets.chomp
-  file = File.open(filename, "r") do |file|
-    file.readlines.each do |line|
-    name, cohort = line.chomp.split(',')
+  CSV.foreach(filename, "r") do |row|
+    row = name, cohort 
     adding_student(name, cohort)
-    end
-    puts "file #{filename} loaded"
   end
+  puts "file #{filename} loaded"
 end
 
 def adding_student(name, cohort)
