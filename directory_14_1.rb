@@ -19,6 +19,7 @@ def save_students
     file.puts csv_line
   end
   file.close
+  puts " Filed saved and closed"
 end
 
 def load_students(filename = @default_filename)
@@ -28,6 +29,7 @@ def load_students(filename = @default_filename)
     adding_student(name, cohort)
   end
   file.close
+  puts "file #{filename} loaded"
 end
 
 def adding_student(name, cohort)
