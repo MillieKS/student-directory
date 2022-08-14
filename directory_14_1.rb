@@ -1,5 +1,7 @@
 @students = []
-def print_menu
+@default_filename = "students.csv"
+
+def print_main_menu
   puts "1. Input the students"
   puts "2. Show the students"
   puts "3. Save the list to students.csv"
@@ -19,7 +21,7 @@ def save_students
   file.close
 end
 
-def load_students(filename = "students.csv")
+def load_students(filename = @default_filename)
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
@@ -33,13 +35,13 @@ def adding_student(name, cohort)
 end
 
 
-def try_load_students
+def loading_students
   filename = ARGV.first # first argument from the command line
   if filename.nil? # get out of the method if it isn't given
     load_students
   elsif File.exist?(filename) # if it exists
     load_students(filename)
-     puts "Loaded #{@students.count} from #{filename}"
+    puts "Loaded #{@students.count} from #{filename}"
   else # if it doesn't exist
     puts "Sorry, #{filename} doesn't exist."
     exit # quit the program
@@ -72,7 +74,7 @@ end
 
 def interactive_menu
   loop do
-    print_menu
+    print_main_menu
     process(STDIN.gets.chomp)
   end
 end
@@ -113,5 +115,5 @@ def input_students
   print_header
   print_student_list
   print_footer
-  try_load_students
+  load_students
   interactive_menu
