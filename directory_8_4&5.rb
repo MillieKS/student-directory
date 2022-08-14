@@ -76,7 +76,7 @@ def adding_hobbies
   hobbies = " "
   puts "Please enter one of their hobbies"
   hobby = gets.chomp
-  puts "To finish, just hit return twice"
+  puts "To finish, just hit return."
   while !hobby.empty?
     hobbies << hobby
     hobby = gets.chomp
